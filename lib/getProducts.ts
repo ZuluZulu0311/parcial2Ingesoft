@@ -1,11 +1,10 @@
 import { supabase } from './supaClient';
 
-export async function getProducts(search: string) {
+export async function getProducts() {
   let query = supabase
     .from('productos')
     .select('id, nombre, descripcion, imagen_url, precio, categoria')
-    .ilike('nombre', `%${search}%`);
-
+  console.log("Si encontre registros")
   const { data, error } = await query;
 
   if (error) {

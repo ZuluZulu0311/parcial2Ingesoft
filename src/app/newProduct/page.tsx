@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { insertProduct } from '../../../lib/createProduct'; 
 import { useRouter } from 'next/navigation';
+import Navbar from '../components/Navbar';
 
 const CATEGORIAS = ['Ropa', 'Tecnología', 'Hogar', 'Juguetes'];
 
@@ -35,7 +36,7 @@ const NuevoProducto = () => {
       const newProduct = await insertProduct(imagen, nombre, descripcion, precio, categoria);
 
       if (newProduct) {
-        alert('Producto añadido correctamente ✅');
+        alert('Producto añadido correctamente');
         router.push('/');
       }
 
@@ -50,6 +51,8 @@ const NuevoProducto = () => {
   };
 
   return (
+    <>
+    <Navbar />
     <div className="max-w-2xl mx-auto mt-10 p-6 bg-white shadow-lg rounded-lg text-black">
       <h1 className="text-2xl font-bold mb-6 text-center">Añadir nuevo producto</h1>
       <form onSubmit={handleSubmit} className="space-y-4">
@@ -130,6 +133,7 @@ const NuevoProducto = () => {
         </div>
       </form>
     </div>
+    </>
   );
 };
 
