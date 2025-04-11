@@ -6,7 +6,7 @@ const Navbar = () => {
       <Link href="/" className="text-xl font-bold">E-Shop</Link>
       <div className="space-x-4">
         <Link href="/" className="hover:text-blue-600">Inicio</Link>
-        <Link href="/cart" className="hover:text-blue-600">Carrito</Link>
+        <Link href="/newProduct" className="hover:text-blue-600">Crear nuevo producto</Link>
       </div>
     </nav>
   );
