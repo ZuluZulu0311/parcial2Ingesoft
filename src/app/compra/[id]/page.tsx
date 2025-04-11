@@ -1,5 +1,8 @@
-import { getProductById } from '@/lib/getProductById';
+import { GodProductService } from '@/lib/Service/ProductService/GodProductService';
 import ProductCard from '../../components/ProductCard';
+
+const GodProductServiceMethods = new GodProductService(); 
+
 
 interface ProductoPageProps {
   params: { id: string };
@@ -7,7 +10,7 @@ interface ProductoPageProps {
 
 export default async function ProductoPage({ params }: ProductoPageProps) {
   const id = params.id;
-  const product = await getProductById(id);
+  const product = await GodProductServiceMethods.obtenerProductoPorId(id);
 
   if (!product) {
     return <p className="text-center mt-10 text-red-600">Producto no encontrado</p>;

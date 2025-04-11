@@ -1,11 +1,12 @@
 'use client';
 
 import { useState } from 'react';
-import { insertProduct } from '../../../lib/createProduct'; 
+import { GodProductService } from '@/lib/Service/ProductService/GodProductService';
 import { useRouter } from 'next/navigation';
 import Navbar from '../components/Navbar';
 
 const CATEGORIAS = ['Ropa', 'Tecnología', 'Hogar', 'Juguetes'];
+const GodProductServiceMethods = new GodProductService(); 
 
 const NuevoProducto = () => {
   const router = useRouter();
@@ -33,7 +34,7 @@ const NuevoProducto = () => {
         return;
       }
 
-      const newProduct = await insertProduct(imagen, nombre, descripcion, precio, categoria);
+      const newProduct = await GodProductServiceMethods.crearProductoConTodo(imagen, nombre, descripcion, precio, categoria);
 
       if (newProduct) {
         alert('Producto añadido correctamente');

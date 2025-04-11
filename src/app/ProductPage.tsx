@@ -1,8 +1,10 @@
-import { getProducts } from "@/lib/getProducts";
+import { GodProductService } from "@/lib/Service/ProductService/GodProductService";
 import ProductCard from "./components/ProductCard";
 
+const GodProductServiceMethods = new GodProductService(); 
+
 export default async function ProductsPage() {
-  const { products } = await getProducts();
+  const products = await GodProductServiceMethods.obtenerTodosLosProductos();
 
   return (
     <main className="p-6">
