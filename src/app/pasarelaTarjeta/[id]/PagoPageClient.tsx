@@ -1,6 +1,6 @@
 'use client';
 import { useState } from 'react';
-import { insertOrder } from '@/lib/Service/OrderService/createOrder';
+import { OrderService } from '@/lib/Service/OrderService/createOrder'; // ✅ Importa la clase correctamente
 import { CreditCardPaymentStrategy } from '@/lib/PaymentStrategy/Strategies/CreditCardPaymentStrategy';
 import ResumenCompra from '../../components/ResumenCompra';
 import { Product } from "@/lib/Models/Products";
@@ -12,6 +12,7 @@ interface PagoPageClientProps {
 
 export default function PagoPageClient({ product, id }: PagoPageClientProps) {
   const [email, setEmail] = useState('');
+  const orderService = new OrderService(); // ✅ Nueva instancia
 
   const handlePagar = async () => {
     if (!email) {
@@ -20,7 +21,7 @@ export default function PagoPageClient({ product, id }: PagoPageClientProps) {
     }
 
     const precio = product.precio;
-    const orden = await insertOrder(parseInt(id), precio, email);
+    const orden = await orderService.insertOrder(parseInt(id), precio, email); // ✅ Llamada a la clase
 
     if (!orden) {
       alert('Error creando la orden');

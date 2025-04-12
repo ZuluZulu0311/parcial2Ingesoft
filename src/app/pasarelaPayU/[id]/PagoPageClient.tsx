@@ -1,6 +1,6 @@
 'use client';
 import { useState } from 'react';
-import { insertOrder } from '@/lib/Service/OrderService/createOrder';
+import { OrderService } from '@/lib/Service/OrderService/createOrder'; // ✅ Importa la clase
 import { PayUPaymentStrategy } from '@/lib/PaymentStrategy/Strategies/PayUPaymentStrategy';
 import ResumenCompra from '../../components/ResumenCompra';
 import { Product } from "@/lib/Models/Products";
@@ -12,10 +12,11 @@ interface PagoPageClientProps {
 
 export default function PagoPageClient({ product, id }: PagoPageClientProps) {
   const [email, setEmail] = useState('');
+  const orderService = new OrderService(); // ✅ Instancia del servicio
 
   const handlePagar = async () => {
     const precio = product.precio;
-    const orden = await insertOrder(parseInt(id), precio, email);
+    const orden = await orderService.insertOrder(parseInt(id), precio, email); // ✅ Uso de método
 
     if (!orden) {
       alert('Error creando la orden');
@@ -29,7 +30,7 @@ export default function PagoPageClient({ product, id }: PagoPageClientProps) {
   return (
     <div className="max-w-md mx-auto p-6 bg-white rounded shadow space-y-4 text-black">
       <h1 className="text-xl font-bold">Pagar Producto</h1>
-        <ResumenCompra product={product}/>
+      <ResumenCompra product={product} />
       <input
         type="email"
         placeholder="Correo electrónico"
