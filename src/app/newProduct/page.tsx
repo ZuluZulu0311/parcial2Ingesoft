@@ -123,7 +123,7 @@ const NuevoProducto = () => {
             onClick={resetForm}
             className="px-4 py-2 border border-gray-400 rounded-md hover:bg-gray-100"
           >
-            Cancelar
+            Borrar formulario
           </button>
           <button
             type="submit"
