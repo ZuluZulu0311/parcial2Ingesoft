@@ -18,6 +18,8 @@ function ProductPagar({ product }: ProductCardProps) {
         className="w-full h-48 object-cover rounded"
       />
       <h2 className="text-lg font-semibold mt-2">{product.nombre}</h2>
+      <h2 className="text-lg font-semibold mt-2"></h2>
+
       <p className="text-gray-600 mb-2">${product.precio}</p>
       <Link href={`/pasarelaPayU/${product.id}`}>
         <button className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 m">
