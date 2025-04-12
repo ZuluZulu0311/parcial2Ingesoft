@@ -27,7 +27,6 @@ export class ConcreteServiceProductBuilder implements IProductBuilder {
         case "salud":
           this.product.descripcion = "Atención personalizada por profesionales en salud.";
           break;
-        case "domesticos":
         case "servicios domésticos":
           this.product.descripcion = "Asistencia en labores del hogar como limpieza, cocina o cuidado.";
           break;
@@ -50,7 +49,7 @@ export class ConcreteServiceProductBuilder implements IProductBuilder {
   }
 
   setPrecio(precio: number): void {
-    this.product.precio = precio < 50 ? 50 : precio;
+    this.product.precio = precio < 10000 ? 10000 : precio;
   }
 
   setCategoria(categoria: string): void {

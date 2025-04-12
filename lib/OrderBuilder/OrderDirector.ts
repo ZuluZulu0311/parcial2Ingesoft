@@ -14,15 +14,4 @@ export class OrderDirector {
     this.builder.setFecha(new Date());
   }
 
-  public buildCustomOrder(
-    productId: number,
-    precio: number,
-    email: string,
-    fecha: Date
-  ): void {
-    this.builder.setProductId(productId);
-    this.builder.setPrecio(precio);
-    this.builder.setEmail(email);
-    this.builder.setFecha(fecha);
-  }
 }

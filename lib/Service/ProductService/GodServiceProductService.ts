@@ -44,7 +44,7 @@ export class GodServiceProductService{
     
         // Realiza insert en la base de datos
         const { data, error } = await supabase
-          .from('productos')
+          .from('productosservicio')
           .insert([{
             nombre: producto.nombre,
             descripcion: producto.descripcion,
@@ -68,7 +68,7 @@ export class GodServiceProductService{
       //Tiene métodos get
       async obtenerTodosLosProductos(): Promise<Product[]> {
         const { data, error } = await supabase
-          .from('productos')
+          .from('productosservicio')
           .select('id, nombre, descripcion, imagen_url, precio, categoria');
     
         if (error) {
@@ -82,7 +82,7 @@ export class GodServiceProductService{
     
       async obtenerProductoPorId(id: string): Promise<Product | null> {
         const { data, error } = await supabase
-          .from('productos')
+          .from('productosservicio')
           .select('id, nombre, descripcion, imagen_url, precio, categoria')
           .eq('id', id)
           .single();
